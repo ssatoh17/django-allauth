@@ -813,6 +813,11 @@ class PasswordResetFromKeyView(
             )
 
         return super(PasswordResetFromKeyView, self).form_valid(form)
+    
+    # バリデーションエラーがあった場合（ #2021-05-23 佐藤追加 ）
+    def form_invalid(self, form):
+        messages.add_message(self.request, messages.ERROR, form.errors)
+        return super().form_invalid(form)  # 元のページのまま
 
 
 password_reset_from_key = PasswordResetFromKeyView.as_view()
