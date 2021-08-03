@@ -69,6 +69,8 @@ Supported Providers
 
 - CERN (OAuth2)
 
+- CILogon (OAuth2)
+
 - Coinbase (OAuth2)
 
 - Dataporten (OAuth2)
@@ -200,6 +202,8 @@ Supported Providers
 - Stripe (OAuth2)
 
 - Telegram
+
+- TrainingPeaks (OAuth2)
 
 - Trello (OAuth)
 

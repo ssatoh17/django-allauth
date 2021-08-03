@@ -312,6 +312,17 @@ CERN OAuth2 Documentation
     https://espace.cern.ch/authentication/CERN%20Authentication/OAuth.aspx
 
 
+CILogon
+----
+CILogon is a federated identity provider for hundreds of universities and research institutions around the world.
+
+App registration (get your key and secret here)
+    https://cilogon.org/oauth2/register
+
+CILogon OIDC/OAuth2 Documentation
+    https://www.cilogon.org/oidc
+
+
 Dataporten
 ----------
 App registration (get your key and secret here)
@@ -1019,6 +1030,12 @@ KEYCLOAK_URL:
     The url of your hosted keycloak server, it must end with ``/auth``. For
     example, you can use: ``https://your.keycloak.server/auth``
 
+KEYCLOAK_URL_ALT:
+    An alternate url of your hosted keycloak server, it must end with ``/auth``. For
+    example, you can use: ``https://your.keycloak.server/auth``
+
+    This can be used when working with Docker on localhost, with a frontend and a backend hosted in different containers.
+
 KEYCLOAK_REAML:
     The name of the ``realm`` you want to use.
 
@@ -1219,8 +1236,8 @@ The following AccessManager settings are available:
             'NETIQ_URL': 'https://my.identity.provider.example.org',
         }
     }
-	
-	
+
+
 App registration (get your key and secret here) is done by the administrator of your NetIQ/Microfocus AccessManager.
 
 
@@ -1757,6 +1774,32 @@ Stripe dashboard API page:
 See more in documentation
  https://stripe.com/docs/connect/standalone-accounts
 
+
+TrainingPeaks
+-------------
+
+You need to request an API Partnership to get your OAth credentials:
+
+ https://api.trainingpeaks.com/request-access
+
+Make sure to request scope `athlete:profile` to be able to use OAuth
+for user login (default if setting `SCOPE` is omitted).
+
+In development you should only use the sandbox services, which is the
+default unless you set `USE_PRODUCTION` to `True`.
+
+.. code-block:: python
+
+    SOCIALACCOUNT_PROVIDERS = {
+        'trainingpeaks': {
+            'SCOPE': ['athlete:profile'],
+            'USE_PRODUCTION': False,
+        }
+    }
+
+API documentation:
+
+ https://github.com/TrainingPeaks/PartnersAPI/wiki
 
 Trello
 ------
